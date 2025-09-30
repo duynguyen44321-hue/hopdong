@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hợp Đồng Thời Hạn 4 Năm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff7ed;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      color: #e63946;
+      text-align: center;
+    }
+    .names {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .names input {
+      padding: 5px;
+      margin: 5px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+    .accordion {
+      background: #ffe5e5;
+      color: #333;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-bottom: 5px;
+      border-radius: 6px;
+    }
+    .accordion:hover {
+      background: #ffcccc;
+    }
+    .active, .accordion:focus {
+      background: #ffb3b3;
+    }
+    .panel {
+      padding: 0 15px;
+      display: none;
+      overflow: hidden;
+      background: #fff0f0;
+      border-radius: 0 0 6px 6px;
+      margin-bottom: 10px;
+    }
+    .signatures {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .signatures div {
+      padding: 10px;
+    }
+    .signed {
+      color: green;
+      font-weight: bold;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-sign {
+      background: #e63946;
+      color: white;
+    }
+    .btn-sign:hover {
+      background: #d62839;
+    }
+    .btn-print {
+      background: #457b9d;
+      color: white;
+    }
+    .btn-print:hover {
+      background: #1d3557;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤝 HỢP ĐỒNG THỜI HẠN 4 NĂM</h1>
+
+  <div class="names">
+    Giữa: <input type="text" id="name1" placeholder="ANH DA ĐEN"> 
+    và <input type="text" id="name2" placeholder="CÔ BÉ HAY DỖI">
+  </div>
+
+  <!-- Điều khoản dạng accordion -->
+  <button class="accordion">Điều 1</button>
+  <div class="panel"><p>Bấm vào rồi mà không thực hiện á, Thì liệu hồn.</p></div>
+  
+  <button class="accordion">Điều 2</button>
+  <div class="panel"><p>chơi game phải rủ, nhớ chửa.</p></div>
+  
+  <button class="accordion">Điều 3</button>
+  <div class="panel"><p>mỗi ngày cô bé hay dỗi phải gửi 1 ảnh để a da đen ngắm. Không muốn thì ấn xuống điều tiếp theo.</p></div>
+  
+  <button class="accordion">Điều 4</button>
+  <div class="panel"><p>Ơ vẫn ấn à😆. Khi bấm xuống đây là đồng ý rồi nhá.</p></div>
+  
+  <button class="accordion">Điều 5</button>
+  <div class="panel"><p>Cùng nhau đồng hành 4 năm nhá hehe.</p></div>
+
+  <!-- Phần ký tên -->
+  <div class="signatures">
+    <div>
+      <button class="btn-sign" onclick="sign('A DA ĐEN')">Tôi ký</button>
+      <div id="signMe"></div>
+    </div>
+    <div>
+      <button class="btn-sign" onclick="sign('CÔ BÉ HAY DỖI')">Bạn bè ký</button>
+      <div id="signFriend"></div>
+    </div>
+  </div>
+
+  <!-- In / Lưu PDF -->
+  <div style="text-align:center; margin-top:20px;">
+    <button class="btn-print" onclick="window.print()">In/Lưu PDF</button>
+  </div>
+
+  <script>
+    // Accordion
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+
+    // Ký tên
+    function sign(who) {
+      if (who === "me") {
+        const name = document.getElementById("name1").value || "A DA ĐEN";
+        document.getElementById("signMe").innerHTML = "Đã ký: <span class='signed'>" + name + "</span>";
+      } else {
+        const name = document.getElementById("name2").value || "CÔ BÉ HAY DỖI";
+        document.getElementById("signFriend").innerHTML = "Đã ký: <span class='signed'>" + name + "</span>";
+      }
+    }
+  </script>
+</body>
+</html>
